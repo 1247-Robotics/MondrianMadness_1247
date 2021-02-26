@@ -14,7 +14,7 @@ import frc.robot.subsystems.Drivetrain;
 
 public class DriveCommand extends BaseCommand {
   double fast = -.8;
-  double slow = -.75;
+  double slow = -.5;
   double speedMult = fast;
     
   double fastRot = .6;
@@ -47,8 +47,8 @@ public class DriveCommand extends BaseCommand {
     // System.out.println("executing teleop");
     if (BaseCommand.isTeleOp){
     
-      if (oi.getButton(1)) {
-        speedMult = fast;
+      if (!oi.getButton(1)) {
+        speedMult = -((-oi.getAxis(3)+1)/2);
         rotMult = fastRot;
       } else {
         speedMult = slow;
@@ -56,12 +56,12 @@ public class DriveCommand extends BaseCommand {
       }
 
       if(oi.getButtonPressed(3)) {
-        drive.rotDeg(-4.5);
+        drive.rotDeg(-12);
       } else if(oi.getButtonPressed(4)) {
-        drive.rotDeg(4.5); 
+        drive.rotDeg(12); 
       }
         
-      drive.arcadeDrive(oi.getAxis(1) * speedMult, oi.getAxis(2) * rotMult, oi.getButton(5), oi.getButton(6));
+      drive.arcadeDrive(oi.getAxis(1) * speedMult, oi.getAxis(2) * rotMult, oi.getButton(5), oi.getButton(2));
     } else {
       //drive.resetEncoders();
       System.out.println(drive.leftDist()+ ", " +drive.rightDist() + ", " + drive.avgDist());
