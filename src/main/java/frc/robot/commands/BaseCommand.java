@@ -6,9 +6,11 @@ import frc.robot.OI;
 import frc.robot.subsystems.Drivetrain;
 //import frc.robot.subsystems.Led;
 //import frc.robot.subsystems.Button;
+import frc.robot.subsystems.LightSensor;
 
 public class BaseCommand extends CommandBase {
     public static Drivetrain drive;
+    public static LightSensor lightSensor;
     // public static Led led;
     // public static Button button;
     public static OI oi;
@@ -22,7 +24,8 @@ public class BaseCommand extends CommandBase {
 
     public static void init() {
         drive = new Drivetrain();
-        drive.setDefaultCommand(new DriveCommand(drive));
+        lightSensor = new LightSensor();
+        drive.setDefaultCommand(new DriveCommand(drive, lightSensor));
         // button = new Button(RobotMap.LED_CHANNEL_1);
         // button.setDefaultCommand(new ButtonCommand(button));
         oi = new OI();

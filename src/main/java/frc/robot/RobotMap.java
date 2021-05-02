@@ -13,8 +13,12 @@ public class RobotMap {
 
     // -------------CONTROLLER-------------
     public static final int EXTREME = 0;
+    public static final int PS4 = 1;
 
     // --------------GPIO-------------------
     public static final int LED_CHANNEL_1 = 9;
-    public static final int ANALOG_CHANNEL_1 = 2;
+    public static final int LINE_L = 3;
+    public static final int LINE_M = 2;
+    public static final int LINE_R = 1;
+
 }
